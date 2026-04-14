@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../components/Button';
 
-// Auto-import all images from the memories folder using Vite
-const modules = import.meta.glob('../assests/images/memories/*.{jpg,jpeg,png,JPG,JPEG}', { eager: true });
+// Auto-import all optimized images from the compressed memories folder
+const modules = import.meta.glob('../assests/images/memories_optimized/*.{jpg,jpeg,png,webp,JPG,JPEG}', { eager: true });
 const imagePaths = Object.values(modules).map(mod => mod.default);
 
 const captions = [
@@ -36,7 +36,7 @@ const Memories = ({ onNext }) => {
     const timer = setInterval(() => {
       setDirection(1);
       setIndex((prev) => (prev + 1) % memories.length);
-    }, 4500);
+    }, 2800); // Faster auto-slideshow
     return () => clearInterval(timer);
   }, []);
 
@@ -85,7 +85,7 @@ const Memories = ({ onNext }) => {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.8}
