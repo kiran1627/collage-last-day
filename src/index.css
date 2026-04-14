@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-900 text-slate-50 antialiased overflow-x-hidden;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: none;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)];
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(34, 211, 238, 0.4); /* Cyan glow */
+  }
+
+  /* Deep, moody ocean cinematic background */
+  .bg-gradient-cinematic {
+    background: radial-gradient(circle at top center, #06192a 0%, #02080f 50%, #000000 100%);
+  }
+
+  /* Cool sleek gradient for friends page */
+  .bg-gradient-emotional {
+    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Hide global scrollbar for app-like feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
